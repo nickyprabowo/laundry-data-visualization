@@ -1,6 +1,7 @@
 const express =  require('express')
 const bodyParser = require('body-parser')
 const route = require('./route')
+const path = require('path')
 const report = require ('./routes/report')
 const price = require ('./routes/price')
 
@@ -12,6 +13,12 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   next();
 });
+
+app.use(express.static('client/build'))
+/*
+app.use('/', function(req,res){
+	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+})*/
 app.use('/api/report', report)
 app.use('/api/price', price)
 

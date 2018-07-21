@@ -59,3 +59,10 @@ i {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
+
+.info {
+  background: #c3fdd2;
+  padding: 0.1em 0.5em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+}

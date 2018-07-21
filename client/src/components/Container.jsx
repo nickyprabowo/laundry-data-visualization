@@ -76,6 +76,9 @@ class Container extends Component{
 					<Diagram data={chartData}/>
 				</div>
 				<div className="table-wrapper">
+					<div className="info">
+						<p>Double Click on Surge Factor to edit</p>
+					</div>
 					<table>
 						<thead>
 							<tr>
