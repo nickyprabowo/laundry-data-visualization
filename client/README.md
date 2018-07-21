@@ -1,3 +1,30 @@
+Nicky Prabowo - Front End Developer
+
+Front-end: ReactJS
+Back-end : NodeJS
+
+Pertama-tama, saya menyiapkan server dengan NodeJS untuk menyimpan dan membaca file .csv. Ada 2 route yang tersedia yaitu, 
+    1. /api/report, untuk mengubah data csv menjadi JSON agar dapat diakses oleh client
+    2. /api/price, menerima request berupa surge_factor dan base_price untuk melakukan perhitungan harga, lalu mengembalikan
+       total_price kepada client
+
+kemudian untuk aplikasi client, saya menggunakan ReactJS. Terdapat 3 komponen pada aplikasi client, yaitu
+    1. Container, komponen dasar tempat untuk meletakkan diagram dan juga tabel. Komponen ini bertugas menyediakan data bagi 
+       komponen Tabel dan Diagram
+        - variabel 'data', berisi JSON object dari csv yang akan digunakan oleh komponen DataList
+        - variabel 'chartData', berisi JSON Object yang akan digunakan oleh komponen Diagram
+    2. DataList, komponen ini digunakan untuk menampilkan data report per baris. 
+        - Komponen ini mendapatkan data (props) per baris dari Container. 
+        - Interaksi yang terjadi dalam komponen ini meliputi buka/tutup Accordion, editable column, dan pengiriman data untuk  kalkulasi total harga di server.
+        - Komponen ini juga berkomunikasi dengan Container melalui callback (props.onChart) untuk mengupdate chartData
+    3. Diagram, komponen ini digunakan untuk visualisasi data. Komponen ini mendapatkan data berupa props dari Container untuk
+       ditampilkan dalam bentuk Barchart.
+
+Projek ini tidak menggunakan Redux dikarenakan komponen yang saling berinteraksi menurut saya masih terlalu sedikit
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

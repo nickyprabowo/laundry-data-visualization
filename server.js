@@ -1,7 +1,6 @@
 const express =  require('express')
 const bodyParser = require('body-parser')
 const route = require('./route')
-const path = require('path');
 const report = require ('./routes/report')
 const price = require ('./routes/price')
 

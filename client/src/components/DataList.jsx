@@ -70,6 +70,7 @@ class DataList extends Component{
 		const { surgeFactor, totalPrice, accordion, input } = this.state
 		const accordionToggle = accordion ? 'active' : ''
 		const inputToggle = input ? 'input-active' : ''
+		// convert week number and year to first day of the week
 		const dateInfo = moment().day('Sunday').week(data.week_num).year(data.year).format('MMM D, YYYY').toString()
 
 		return(
