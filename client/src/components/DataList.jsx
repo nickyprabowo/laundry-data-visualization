@@ -84,14 +84,14 @@ class DataList extends Component{
 		    			}
 		    			</span>{data.city}
 		    		</td>
-		    		<td className="centered">{data[price]}</td>
+		    		<td className="centered">Rp {Number(data[price]).toLocaleString('id')}</td>
 		    		<td onDoubleClick={this.toggleInput} className="centered">
 		    			{!inputToggle ?
 		    				<p>{surgeFactor}</p> :
 		    				<input name="surgeFactor" onKeyPress={this.handleSubmit}/>
 		    			}
 		    		</td>
-		    		<td className="centered">Rp {totalPrice}</td>
+		    		<td className="centered">Rp {totalPrice.toLocaleString('id')}</td>
 	    		</tr>
 	    		<tr className={`accordion ${accordionToggle}`} >
 	    			<td colSpan="4">
