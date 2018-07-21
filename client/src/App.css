@@ -1,3 +1,11 @@
+.container{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 45% 50%;
+  grid-gap: 2em;
+  align-content: center;
+}
+
 table{
   width: 100%;
   border-collapse: collapse;
@@ -25,10 +33,6 @@ tr:nth-child(even) {
   height: 50px;
 }
 
-.editable{
-  display: none;
-}
-
-.input-active{
-  display: table-column;
+.date-info{
+  float: right;
 }

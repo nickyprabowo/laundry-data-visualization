@@ -29,7 +29,7 @@ class DataList extends Component{
 	calculatePrice = (surgeFactor) => {
 
 		const { url } = this.state
-		const { data,price } = this.props
+		const { data, price } = this.props
 		const message = {
 			surgeFactor,
 			price: data[price]
@@ -37,9 +37,14 @@ class DataList extends Component{
 
 		fetch(url+'/price', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(message)})
 			.then(res => res.json())
-			.then(data => {
+			.then(result => {
 				this.setState({
-					totalPrice: data.price
+					totalPrice: result.price
+				}, () => {
+					this.props.onChart({
+						city: data.city,
+						total_price: result.price
+					})
 				})
 			})
 			.catch(err => {
@@ -61,6 +66,7 @@ class DataList extends Component{
 		const { surgeFactor, totalPrice } = this.state
 		const accordionToggle = this.state.accordion ? 'active' : ''
 		const inputToggle = this.state.input ? 'input-active' : ''
+		const dateInfo = moment().day('Sunday').week(data.week_num).year(data.year).format('MMM D, YYYY').toString()
 
 		return(
 			<React.Fragment>
@@ -68,16 +74,18 @@ class DataList extends Component{
 		    		<td><span onClick={this.handleClick}> > </span>{data.city}</td>
 		    		<td>{data[price]}</td>
 		    		<td onDoubleClick={this.toggleInput}>
-		    			<p className={`${!inputToggle}`}>{surgeFactor}</p>
-		    			<input name="surgeFactor" className={`editable ${inputToggle}`} onKeyPress={this.handleSubmit}/>
+		    			{!inputToggle ?
+		    				<p>{surgeFactor}</p> :
+		    				<input name="surgeFactor" onKeyPress={this.handleSubmit}/>
+		    			}
 		    		</td>
 		    		<td>{totalPrice}</td>
 	    		</tr>
 	    		<tr className={`accordion ${accordionToggle}`} >
 	    			<td colSpan="4">
 	    				<div className="description">
-	    					{data.info}
-	    					{moment().day('Sunday').week(data.week_num).year(data.year).format('MMM D, YYYY').toString()}
+	    					<p>{data.info}</p>
+	    					<span className='date-info'>{dateInfo}</span>
 	    				</div>
 	    			</td>
 	    		</tr>
