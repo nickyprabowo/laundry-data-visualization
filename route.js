@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 		delimiter: ',',
 	})
 	.fromFile(__dirname + '/public/testFE.csv')
-	.then((jsonObj)=>{
+	.then(jsonObj => {
 		res.send(jsonObj)
 	})
 })
