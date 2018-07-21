@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import DataList from './DataList'
 import Diagram from './Diagram'
 
-class Table extends Component{
+class Container extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
@@ -33,7 +33,8 @@ class Table extends Component{
 	}
 
 	buildChartData = () => {
-		const result = this.state.data.map(item => {
+		const { data } = this.state
+		const result = data.map(item => {
 			const bar = {
 				city: item.city,
 				total_price: ''
@@ -105,4 +106,4 @@ class Table extends Component{
 	}
 }
 
-export default Table
+export default Container

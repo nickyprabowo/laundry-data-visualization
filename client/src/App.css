@@ -1,4 +1,4 @@
-.container{
+.container {
   height: 100vh;
   display: grid;
   grid-template-columns: 45% 50%;
@@ -6,33 +6,56 @@
   align-content: center;
 }
 
-table{
+table {
   width: 100%;
   border-collapse: collapse;
 } 
 
 th, td {
-    border: 1px solid #dddddd;
+  border: 1px solid #dddddd;
+  padding: 0.3em;
+}
+
+.centered {
+  text-align: center;
+  vertical-align: center;
 }
 
 tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-.accordion{
+.accordion {
   background: #efefef;
   display: none;
 }
 
-.active{
+.active {
   display: table-row;
   width: 100%;
 }
 
-.description{
-  height: 50px;
+.description {
+  padding: 0 1em;
 }
 
-.date-info{
-  float: right;
+.date-info {
+  text-align: right;
+}
+
+i {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }

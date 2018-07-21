@@ -14,6 +14,7 @@ class DataList extends Component{
 		}
 	}
 
+
 	handleClick = () => {
 		this.setState({
 			accordion: !this.state.accordion
@@ -63,29 +64,37 @@ class DataList extends Component{
 
 	render(){
 		const { data,price } = this.props
-		const { surgeFactor, totalPrice } = this.state
-		const accordionToggle = this.state.accordion ? 'active' : ''
-		const inputToggle = this.state.input ? 'input-active' : ''
+		const { surgeFactor, totalPrice, accordion, input } = this.state
+		const accordionToggle = accordion ? 'active' : ''
+		const inputToggle = input ? 'input-active' : ''
 		const dateInfo = moment().day('Sunday').week(data.week_num).year(data.year).format('MMM D, YYYY').toString()
 
 		return(
 			<React.Fragment>
 				<tr>
-		    		<td><span onClick={this.handleClick}> > </span>{data.city}</td>
-		    		<td>{data[price]}</td>
-		    		<td onDoubleClick={this.toggleInput}>
+		    		<td>
+		    			<span onClick={this.handleClick} style={{marginRight: '0.5em', cursor: 'pointer'}}>
+		    			{accordion ?
+		    				<i class="arrow down"></i>
+		    				:
+		    				<i class="arrow right"></i>
+		    			}
+		    			</span>{data.city}
+		    		</td>
+		    		<td className="centered">{data[price]}</td>
+		    		<td onDoubleClick={this.toggleInput} className="centered">
 		    			{!inputToggle ?
 		    				<p>{surgeFactor}</p> :
 		    				<input name="surgeFactor" onKeyPress={this.handleSubmit}/>
 		    			}
 		    		</td>
-		    		<td>{totalPrice}</td>
+		    		<td className="centered">Rp {totalPrice}</td>
 	    		</tr>
 	    		<tr className={`accordion ${accordionToggle}`} >
 	    			<td colSpan="4">
 	    				<div className="description">
 	    					<p>{data.info}</p>
-	    					<span className='date-info'>{dateInfo}</span>
+	    					<p className='date-info'>{dateInfo}</p>
 	    				</div>
 	    			</td>
 	    		</tr>
