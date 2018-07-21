@@ -6,8 +6,11 @@ class DataList extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
+			url: 'http://localhost:5000/api',
 			accordion: false,
-			input: false
+			input: false,
+			surgeFactor: '',
+			totalPrice: ''
 		}
 	}
 
@@ -23,14 +26,39 @@ class DataList extends Component{
 		})
 	}
 
+	calculatePrice = (surgeFactor) => {
+
+		const { url } = this.state
+		const { data,price } = this.props
+		const message = {
+			surgeFactor,
+			price: data[price]
+		}
+
+		fetch(url+'/price', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(message)})
+			.then(res => res.json())
+			.then(data => {
+				this.setState({
+					totalPrice: data.price
+				})
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
+
 	handleSubmit = (e) => {
 		if(e.key === 'Enter'){
 			this.toggleInput()
+			this.setState({
+				[e.target.name]: e.target.value
+			},this.calculatePrice(e.target.value))
 		}
 	}
 
 	render(){
-		const {data,price} = this.props
+		const { data,price } = this.props
+		const { surgeFactor, totalPrice } = this.state
 		const accordionToggle = this.state.accordion ? 'active' : ''
 		const inputToggle = this.state.input ? 'input-active' : ''
 
@@ -40,9 +68,10 @@ class DataList extends Component{
 		    		<td><span onClick={this.handleClick}> > </span>{data.city}</td>
 		    		<td>{data[price]}</td>
 		    		<td onDoubleClick={this.toggleInput}>
-		    			<input name="surgePrice" className={`editable ${inputToggle}`} onKeyPress={this.handleSubmit}/>
+		    			<p className={`${!inputToggle}`}>{surgeFactor}</p>
+		    			<input name="surgeFactor" className={`editable ${inputToggle}`} onKeyPress={this.handleSubmit}/>
 		    		</td>
-		    		<td></td>
+		    		<td>{totalPrice}</td>
 	    		</tr>
 	    		<tr className={`accordion ${accordionToggle}`} >
 	    			<td colSpan="4">

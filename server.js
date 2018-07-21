@@ -14,6 +14,7 @@ app.use(function(req, res, next) {
   next();
 });
 app.use('/api/report', report)
+app.use('/api/price', price)
 
 const port = process.env.PORT || 5000
 
