@@ -6,7 +6,6 @@ class DataList extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			url: 'http://localhost:5000/api',
 			accordion: false,
 			input: false,
 			surgeFactor: '',
@@ -14,6 +13,11 @@ class DataList extends Component{
 		}
 	}
 
+	componentDidUpdate = (prevProps) => {
+		if(this.props.price !== prevProps.price){
+			this.calculatePrice(this.state.surgeFactor)
+		}
+	}
 
 	handleClick = () => {
 		this.setState({
@@ -29,8 +33,7 @@ class DataList extends Component{
 
 	calculatePrice = (surgeFactor) => {
 
-		const { url } = this.state
-		const { data, price } = this.props
+		const { data, price, url } = this.props
 		const message = {
 			surgeFactor,
 			price: data[price]

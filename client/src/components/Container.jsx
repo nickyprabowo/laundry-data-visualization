@@ -68,10 +68,11 @@ class Container extends Component{
 	}
 
 	render(){
-		const { data, options, basePrice, chartData } = this.state
+		const { data, options, basePrice, chartData, url } = this.state
 		return(
 			<div className="container">
 				<div className="diagram-wrapper">
+					<h2 style={{marginLeft:'2em'}}>Total Price after Surge</h2>
 					<Diagram data={chartData}/>
 				</div>
 				<div className="table-wrapper">
@@ -95,7 +96,13 @@ class Container extends Component{
 					 	<tbody>
 					 		{data.map( (item,index) => {
 						    	return (
-						    		<DataList key={index} data={item} price={basePrice} onChart={this.drawChart}/>
+						    		<DataList 
+							    		key={index} 
+							    		data={item} 
+							    		price={basePrice} 
+							    		url={url}
+							    		onChart={this.drawChart}
+						    		/>
 						    	)
 						    } )}
 					 	</tbody>
