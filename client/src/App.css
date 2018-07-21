@@ -10,3 +10,25 @@ th, td {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.accordion{
+  background: #efefef;
+  display: none;
+}
+
+.active{
+  display: table-row;
+  width: 100%;
+}
+
+.description{
+  height: 50px;
+}
+
+.editable{
+  display: none;
+}
+
+.input-active{
+  display: table-column;
+}

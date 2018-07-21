@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DataList from './DataList'
 
 class Table extends Component{
 	constructor(props){
@@ -41,32 +42,29 @@ class Table extends Component{
 			<div>
 				<h1>Tableh</h1>
 				<table>
-				  <tr>
-				    <th>City</th>
-				    <th>
-				    	<select value={basePrice} onChange={this.handleChange}>
-				    		{options.map(option => {
-				    			return (
-				    				<option value={option.value}>{option.text}</option>
-				    			)
-				    		})}
-				        </select>
-				    </th>
-				    <th>Surge Factor</th>
-				    <th>Total Price</th>
-				  </tr>
-				  
-				    {data.map( item => {
-				    	return (
-				    		<tr>
-					    		<td>{item.city}</td>
-					    		<td>{item[basePrice]}</td>
-					    		<td></td>
-					    		<td></td>
-				    		</tr>
-				    	)
-				    } )}
-				  
+					<thead>
+						<tr>
+						    <th>City</th>
+						    <th>
+						    	<select value={basePrice} onChange={this.handleChange}>
+						    		{options.map(option => {
+						    			return (
+						    				<option value={option.value}>{option.text}</option>
+						    			)
+						    		})}
+						        </select>
+						    </th>
+						    <th>Surge Factor</th>
+						    <th>Total Price</th>
+						</tr>
+					</thead>
+				 	<tbody>
+				 		{data.map( item => {
+					    	return (
+					    		<DataList data={item} price={basePrice}/>
+					    	)
+					    } )}
+				 	</tbody>
 				</table>
 			</div>
 		)
