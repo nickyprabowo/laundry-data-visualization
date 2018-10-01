@@ -8,14 +8,14 @@ class DataList extends Component{
 		this.state = {
 			accordion: false,
 			input: false,
-			surgeFactor: '',
+			weight: '',
 			totalPrice: ''
 		}
 	}
 
 	componentDidUpdate = (prevProps) => {
 		if(this.props.price !== prevProps.price){
-			this.calculatePrice(this.state.surgeFactor)
+			this.calculatePrice(this.state.weight)
 		}
 	}
 
@@ -31,29 +31,29 @@ class DataList extends Component{
 		})
 	}
 
-	calculatePrice = (surgeFactor) => {
+	calculatePrice = (weight) => {
 
 		const { data, price, url } = this.props
-		const message = {
-			surgeFactor,
-			price: data[price]
-		}
 
-		fetch(url+'/price', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(message)})
-			.then(res => res.json())
-			.then(result => {
-				this.setState({
-					totalPrice: result.price
-				}, () => {
-					this.props.onChart({
-						city: data.city,
-						total_price: result.price
-					})
-				})
+		this.setState({
+			totalPrice: weight * data[price]
+		}, () => {
+			this.props.onChart({
+				city: data.city,
+				total_price: weight * data[price]
 			})
-			.catch(err => {
-				console.log(err)
-			})
+		})
+		
+	}
+
+	handleWeightChange = e => {
+		const target = e.target;
+	    const value = target.value;
+	    const name = target.name;
+
+		this.setState({
+			[name]: value 
+		})
 	}
 
 	handleSubmit = (e) => {
@@ -67,7 +67,7 @@ class DataList extends Component{
 
 	render(){
 		const { data,price } = this.props
-		const { surgeFactor, totalPrice, accordion, input } = this.state
+		const { weight, totalPrice, accordion, input } = this.state
 		const accordionToggle = accordion ? 'active' : ''
 		const inputToggle = input ? 'input-active' : ''
 		// convert week number and year to first day of the week
@@ -88,8 +88,8 @@ class DataList extends Component{
 		    		<td className="centered">Rp {Number(data[price]).toLocaleString('id')}</td>
 		    		<td onDoubleClick={this.toggleInput} className="centered">
 		    			{!inputToggle ?
-		    				<p>{surgeFactor}</p> :
-		    				<input name="surgeFactor" onKeyPress={this.handleSubmit}/>
+		    				<p>{weight}</p> :
+		    				<input name="weight" onChange={this.handleWeightChange} value={weight} onKeyPress={this.handleSubmit}/>
 		    			}
 		    		</td>
 		    		<td className="centered">Rp {totalPrice.toLocaleString('id')}</td>

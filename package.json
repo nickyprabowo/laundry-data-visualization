@@ -1,15 +1,17 @@
 {
-  "name": "gotest",
+  "name": "laundry",
   "version": "1.0.0",
   "description": "Data Visualization App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
+    "server-install-run": "npm install && npm start",
+    "client-install-build": "npm install --prefix client && npm run build --prefix client",
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
-    "build-client": "npm run build --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""    
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build-and-run": "concurrently \"npm run server-install-run\" \"npm run client-install-build\""
   },
   "author": "Nicky Prabowo",
   "license": "ISC",

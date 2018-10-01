@@ -1,9 +1,22 @@
 .container {
   height: 100vh;
   display: grid;
-  grid-template-columns: 45% 50%;
+  grid-template-columns: auto auto;
+  justify-content: center;
   grid-gap: 2em;
   align-content: center;
+}
+
+@media only screen and (max-width: 768px){
+  .container {
+    padding: 40px;
+  }
+  .diagram-wrapper{
+    grid-area: 1 / 1 / 2 / 3;
+  }
+  .table-wrapper {
+    grid-area: 2 / span 2 / 3 / 3;
+  }
 }
 
 table {

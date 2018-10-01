@@ -9,11 +9,11 @@ class Container extends Component{
 			url: 'http://localhost:5000/api',
 			data: [],
 			options: [
-				{key: 0, value: 'base_price_ride', text: 'Base Price Ride'},
-				{key: 1, value: 'base_price_car', text: 'Base Price Car'},
-				{key: 2, value: 'base_price_food', text: 'Base Price Food'},
+				{key: 0, value: 'regular_price', text: 'Regular Price'},
+				{key: 1, value: 'express_price', text: 'Express Price'},
+				{key: 2, value: 'same_day_price', text: 'Same Day Price'},
 			],
-			basePrice: 'base_price_ride',
+			basePrice: 'regular_price',
 			chartData: []
 		}
 	}
@@ -72,12 +72,12 @@ class Container extends Component{
 		return(
 			<div className="container">
 				<div className="diagram-wrapper">
-					<h2 style={{marginLeft:'2em'}}>Total Price after Surge</h2>
+					<h2>Laundry Prices</h2>
 					<Diagram data={chartData}/>
 				</div>
 				<div className="table-wrapper">
 					<div className="info">
-						<p>Double Click on Surge Factor to edit</p>
+						<p>Double Click on Weight column to edit</p>
 					</div>
 					<table>
 						<thead>
@@ -92,7 +92,7 @@ class Container extends Component{
 							    		})}
 							        </select>
 							    </th>
-							    <th>Surge Factor</th>
+							    <th>Weight</th>
 							    <th>Total Price</th>
 							</tr>
 						</thead>

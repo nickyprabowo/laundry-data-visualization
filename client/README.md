@@ -22,8 +22,17 @@ kemudian untuk aplikasi client, saya menggunakan ReactJS. Terdapat 3 komponen pa
 
 Projek ini tidak menggunakan Redux dikarenakan komponen yang saling berinteraksi menurut saya masih terlalu sedikit
 
-
-
+Petunjuk pemasangan aplikasi
+1. Buka command-line lalu akses folder 'gotest'
+2. ketikkan 'npm run build-and-run', lalu tekan enter. Proses instalasi akan berlangsung dan aplikasi akan terbuka saat selesai
+   pada http://localhost:5000
+3. Daftar perintah command-line yang dapat digunakan di folder 'gotest'
+    - npm run build-and-run, instalasi server dan client sekaligus menjalankan server dan build client
+    - npm run server-install-run, instalasi dependency server kemudian dilanjutkan dengan menjalankan server
+    - npm run client-install-build, instalasi dependecy client(aplikasi) kemudian dilanjutkan build client(aplikasi)
+    - npm run client-install, instalasi dependecy client(aplikasi)
+    - npm run client, menjalankan aplikasi client(aplikasi)
+    - npm run dev, menjalankan server dan client(aplikasi) secara paralel
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

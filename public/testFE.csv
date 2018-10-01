@@ -1,10 +1,10 @@
-city,base_price_ride,base_price_car,base_price_food,info,week_num,year
-JKT,2500,5000,2500,lorem ipsum dolor sit amet,26,2018
-BKS,3500,4000,2500,lorem ipsum dolor sit amet,25,2018
-BGR,5000,3700,2500,lorem ipsum dolor sit amet,28,2018
-TGR,4500,4000,2500,lorem ipsum dolor sit amet,16,2018
-BDG,1500,5000,2000,lorem ipsum dolor sit amet,29,2018
-SRG,1500,5000,2000,lorem ipsum dolor sit amet,37,2018
-SOL,1500,4500,2500,lorem ipsum dolor sit amet,27,2018
-YOG,1500,4000,2000,lorem ipsum dolor sit amet,46,2018
-SUR,2500,6000,2500,lorem ipsum dolor sit amet,26,2018
+city,regular_price,express_price,same_day_price,info,week_num,year
+JKT,2500,5000,7500,lorem ipsum dolor sit amet,26,2018
+BKS,3500,5000,8500,lorem ipsum dolor sit amet,25,2018
+BGR,5000,6000,6500,lorem ipsum dolor sit amet,28,2018
+TGR,4500,5500,6500,lorem ipsum dolor sit amet,16,2018
+BDG,1500,5000,7000,lorem ipsum dolor sit amet,29,2018
+SRG,1500,5000,7000,lorem ipsum dolor sit amet,37,2018
+SOL,1500,4500,8500,lorem ipsum dolor sit amet,27,2018
+YOG,1500,4000,7000,lorem ipsum dolor sit amet,46,2018
+SUR,2500,6000,7500,lorem ipsum dolor sit amet,26,2018

@@ -3,7 +3,7 @@ const csv = require('csvtojson')
 const path = require('path')
 
 router.post('/', (req, res) => {
-	const price = req.body.surgeFactor * req.body.price
+	const price = req.body.weight * req.body.price
 	res.json({price})
 })
 
